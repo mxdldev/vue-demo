@@ -1,15 +1,13 @@
 <template>
-
+    <div>这是Header</div>
 </template>
 
 <script>
     export default {
-        name: 'HelloWorld',
-        props: {
-            msg: String
-        }
+        name: "Header"
     }
 </script>
 
 <style scoped>
+
 </style>
