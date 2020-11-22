@@ -89,13 +89,18 @@
             <span v-if='!ok'>这是一个No</span>
             <button @click="getList()">获取list的值</button>
         </div>
-        <h3>15.组件的定义</h3>
+        <h3>15.组件的定义,父组件传递数据到子组件</h3>
         <div>
             <Home></Home>
             <News></News>
         </div>
         <h3>16.声明周期</h3>
         <Life></Life>
+        <h4>17.路由的使用</h4>
+         <div>
+             <div><span><router-link to="/home">首页</router-link></span><span style="margin: 20px"><router-link to="/news">新闻</router-link></span><span v-on:click="goto">小视频</span></div>
+             <router-view></router-view>
+         </div>
     </div>
 </template>
 
@@ -199,6 +204,9 @@
             },
             getList(){
                 console.log(this.listabc)
+            },
+            goto(){
+                this.$router.push({path:'/video'})
             }
 
         }
