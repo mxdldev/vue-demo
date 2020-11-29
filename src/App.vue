@@ -96,11 +96,14 @@
         </div>
         <h3>16.声明周期</h3>
         <Life></Life>
-        <h4>17.路由的使用</h4>
+        <h3>17.路由的使用</h3>
          <div>
              <div><span><router-link to="/home">首页</router-link></span><span style="margin: 20px"><router-link to="/news">新闻</router-link></span><span v-on:click="goto">小视频</span></div>
              <router-view></router-view>
          </div>
+        <h3>17.axios的使用</h3>
+        <div><button v-on:click="getData">Axiso获取数据</button></div>
+        <div><button v-on:click="getData1">vue-resource获取数据</button></div>
     </div>
 </template>
 
@@ -109,6 +112,7 @@
     import Home from "./components/Home";
     import News from "./components/News";
     import Life from "./components/Life";
+    import Axios from 'axios';
     export default {
         name: 'App',
         components: {News, Home,Life},
@@ -206,7 +210,30 @@
                 console.log(this.listabc)
             },
             goto(){
-                this.$router.push({path:'/video'})
+                this.$router.push({name:'Video',params:{'a':'1','b':"2"}})
+            },
+            getData(){
+                var api='http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=1';
+                Axios.get(api).then((response)=>{
+                    this.list=response.data.result;
+                    console.log("login start...")
+                    console.log(this.list)
+                }).catch((error)=>{
+                    console.log(error);
+                })
+            },
+            getData1(){
+                //请求数据
+                var api='http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=1';
+                this.$http.get(api).then((response)=>{
+                    console.log(response);
+                    //注意this指向
+                    this.list=response.body.result;
+
+                },function(err){
+                    console.log(err);
+                })
+
             }
 
         }

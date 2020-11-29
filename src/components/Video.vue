@@ -4,7 +4,13 @@
 
 <script>
     export default {
-        name: "Video"
+        name: "Video",
+        created(){
+           // this.$route.params[name]
+            var a = this.$route.params.a
+            var b = this.$route.params.b
+            console.log("a:"+a+";b:"+b)
+        }
     }
 </script>
 

@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from "vue-router";
+import VueResource from 'vue-resource';
 import App from './App.vue'
 
+Vue.use(VueResource);
 Vue.use(VueRouter)
 
 Vue.config.productionTip = false
@@ -12,7 +14,8 @@ import Video from "@/components/Video";
 const routes = [
   { path: '/home', component: Home },
   { path: '/news', component: News },
-  { path: '/video', component: Video }
+  { path: '/video', component: Video,name:'Video' },
+  { path: '*', redirect: '/home' }   /*默认跳转路由*/
 ]
 
 // 3. 创建 router 实例，然后传 `routes` 配置
